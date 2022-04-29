@@ -1,0 +1,27 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.bg-blue{
+  background-color: rgb(41, 177, 221);
+  color: white;
+  height: 50px;
+}
+.bg-white{
+  height: 50px;
+  font-size: 40px;
+  font-weight: 900;
+  font-style: italic;
+  color: rgb(41, 177, 221);
+}
+.navbar.navbar-light.bg-light{
+  margin: 0;
+  padding: 0;
+}
+i{
+  font-size: 50px;
+}
+.c-orange{
+  color: orange;
+}
