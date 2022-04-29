@@ -114,18 +114,30 @@ const icons = [
 ];
 
 const target = document.querySelector('.icon-container');
+const select = document.querySelector('select')
 
-icons.forEach(icon => {
-  target.innerHTML += `
-  <div class="col">
+iconPrinter(icons, select.value);
 
-    <div class="card my-3 pt-4 justify-content-center align-content-center" >
-      <i class="${icon.prefix}solid ${icon.prefix}${icon.name} text-center c-${icon.color}"></i>        
-      <div class="card-body">
-        <h2 class="card-title text-center">${icon.name.toUpperCase()}</h2>          
+function iconPrinter(array, option){
+  array.forEach(element => {
+    const tLiteral = `
+    <div class="col">
+      <div class="card my-3 pt-4 justify-content-center align-content-center" >
+        <i class="${element.prefix}solid ${element.prefix}${element.name} text-center c-${element.color}"></i>        
+        <div class="card-body">
+          <h3 class="card-title text-center">${element.name.toUpperCase()}</h3>          
+        </div>
       </div>
-    </div>
-
-  </div>
-  `
+    </div>`;
+    if(option == 'all'){
+      target.innerHTML += tLiteral;
+    }else if(option == element.type){
+      target.innerHTML += tLiteral;
+    }
+  })
+}
+select.addEventListener('change',function(){
+  console.log(select.value);
+  target.innerHTML = '';
+  iconPrinter(icons, select.value);
 })
