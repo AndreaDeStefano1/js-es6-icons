@@ -112,11 +112,25 @@ const icons = [
 		color: 'blue'
 	}
 ];
-
+option = ['all' ];
 const target = document.querySelector('.icon-container');
 const select = document.querySelector('select')
 
-iconPrinter(icons, select.value);
+document.addEventListener("DOMContentLoaded", function() {
+	optionGenerator(icons);
+	console.log(option);
+	for (let i = 0; i < option.length; i++) {
+		const element = option[i];
+		tLiteralOption = `<option value="${element}">${capitalizeFirstLetter(element)}</option>`;
+		select.innerHTML += tLiteralOption;
+		
+	}
+	iconPrinter(icons, select.value);
+});
+function capitalizeFirstLetter(string) {
+	return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
 select.addEventListener('change',function(){
   console.log(select.value);
   target.innerHTML = '';
@@ -220,3 +234,13 @@ function colorGenerator(){
 	}
 	return generatedColor
 }
+
+
+function optionGenerator(array){
+	array.forEach(element => {
+		if(!(option.includes(element.type))){
+			option.push(element.type)
+		}
+	});
+}
+
